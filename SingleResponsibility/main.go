@@ -23,13 +23,13 @@ func (n *Notepad) RemoveNote(index int) {
 }
 
 //ToString join all notes and return them as one string
-func (n *Notepad) ToString() string {
+func (n Notepad) String() string {
 	return strings.Join(n.notes, "\n")
 }
 
 //function to save notes to flile
 func (n *Notepad) SaveToFile(path string) {
-	_ = os.WriteFile(path, []byte(n.ToString()), 0644)
+	_ = os.WriteFile(path, []byte(n.String()), 0644)
 	/*The io/ioutil package has turned out in go 1.16
 	_ = ioutil.WriteFile(path,
 		[]byte(n.ToString()), 0644)
@@ -76,6 +76,8 @@ func main() {
 			//removing failed note
 			mynotes.RemoveNote(1)
 	*/
+	//removing failed note
+	mynotes.RemoveNote(1)
 	/*
 		//correct way
 			//save notes to file
@@ -89,8 +91,8 @@ func main() {
 	//set dedault path
 	s.default_path = "SingleResponsibility/03_better_way"
 	//save notes to file
-	s.SaveToFile(mynotes.ToString(), "")
+	s.SaveToFile(mynotes.String(), "")
 	//print notes
-	fmt.Println(mynotes.ToString())
+	fmt.Println(mynotes)
 
 }
