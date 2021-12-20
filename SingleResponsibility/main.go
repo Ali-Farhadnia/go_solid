@@ -23,7 +23,7 @@ func (n *Notepad) RemoveNote(index int) {
 }
 
 //String join all notes and return them as one string
-func (n Notepad) String() string {
+func (n *Notepad) String() string {
 	return strings.Join(n.notes, "\n")
 }
 
@@ -93,6 +93,6 @@ func main() {
 	//save notes to file
 	s.SaveToFile(mynotes.String(), "")
 	//print notes
-	fmt.Println(mynotes)
+	fmt.Println(mynotes.String())
 
 }
