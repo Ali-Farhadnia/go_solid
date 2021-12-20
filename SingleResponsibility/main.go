@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 	"strings"
 )
 
@@ -29,13 +29,19 @@ func (n *Notepad) ToString() string {
 
 //function to save notes to flile
 func (n *Notepad) SaveToFile(path string) {
+	_ = os.WriteFile(path, []byte(n.ToString()), 0644)
+	/*The io/ioutil package has turned out in go 1.16
 	_ = ioutil.WriteFile(path,
 		[]byte(n.ToString()), 0644)
+	*/
 }
 
 //function to save notes to file
 func SaveToFile(input string, path string) {
+	_ = os.WriteFile(path, []byte(input), 0644)
+	/*The io/ioutil package has turned out in go 1.16
 	_ = ioutil.WriteFile(path, []byte(input), 0644)
+	*/
 }
 
 //save structure
@@ -49,7 +55,10 @@ func (s *Save) SaveToFile(input string, path string) {
 	if path == "" {
 		path = s.default_path
 	}
+	_ = os.WriteFile(path, []byte(input), 0644)
+	/*The io/ioutil package has turned out in go 1.16
 	_ = ioutil.WriteFile(path, []byte(input), 0644)
+	*/
 }
 
 func main() {
