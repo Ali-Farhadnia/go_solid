@@ -22,7 +22,7 @@ func (n *Notepad) RemoveNote(index int) {
 		append(n.notes[:index], n.notes[index+1:]...)
 }
 
-//ToString join all notes and return them as one string
+//String join all notes and return them as one string
 func (n Notepad) String() string {
 	return strings.Join(n.notes, "\n")
 }
